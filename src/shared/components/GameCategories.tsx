@@ -27,7 +27,7 @@ const categories = [
 
 export default function GameCategories() {
   return (
-    <div className="grid grid-cols-4 gap-4 mb-8">
+    <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8 max-lg:mt-8">
       {categories.map((category, index) => (
         <motion.div
           key={category.title}
@@ -36,7 +36,7 @@ export default function GameCategories() {
           transition={{ duration: 0.5, delay: index * 0.1 }}
         >
           <Card
-            className="bg-gradient-to-br from-[#1E2329] to-[#0B0E17] cursor-pointer hover:scale-105 transition-transform rounded-xl w-full"
+            className="bg-gradient-to-r from-[#1e283f] to-[#0f1627] cursor-pointer hover:scale-105 transition-transform rounded-xl w-full"
             isPressable
           >
             <CardBody className="flex flex-row-reverse items-center gap-4 p-4 w-full justify-between">

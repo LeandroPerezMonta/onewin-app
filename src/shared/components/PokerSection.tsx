@@ -2,11 +2,12 @@
 
 import { Button, Card } from "@nextui-org/react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export default function PokerSection() {
   return (
-    <Card className="bg-gradient-to-r from-[#1E2329] to-[#0B0E17] overflow-hidden rounded-xl">
-      <div className="flex justify-between items-center p-8">
+    <Card className="bg-gradient-to-r from-[#1e283f] to-[#0f1627] overflow-hidden rounded-xl mb-8 p-4 relative">
+      <div className="flex justify-between items-center z-[2]">
         <div>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -23,37 +24,15 @@ export default function PokerSection() {
             </Button>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative w-64 h-64"
-        >
-          {/* Animated playing cards */}
-          <motion.div
-            animate={{
-              rotate: [-5, 5, -5],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <div className="relative">
-              <div className="absolute -right-8 -top-12 transform rotate-12 text-6xl">
-                ♠️
-              </div>
-              <div className="absolute -left-8 -bottom-12 transform -rotate-12 text-6xl">
-                ♥️
-              </div>
-              <div className="text-8xl font-bold text-white">A</div>
-            </div>
-          </motion.div>
-        </motion.div>
+      <canvas data-v-1e11f167="" className="promo-card__pic" width="256" height="256"></canvas>
       </div>
+      <Image
+        className="absolute right-0 z-[1]"
+        src={'https://v1.bundlecdn.com/img/home-poker-banner-bg.daea5f5cb-600.png'}
+        alt="asdasd"
+        width={600}
+        height={400}
+      />
     </Card>
   )
 }

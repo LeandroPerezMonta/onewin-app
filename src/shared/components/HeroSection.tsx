@@ -2,12 +2,13 @@
 
 import { Button, Card } from "@nextui-org/react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export default function HeroSection() {
   return (
-    <div className="grid grid-cols-5 gap-4 mb-8">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:mb-8 f-full 2xl:h-[410px]">
       {/* Main hero card */}
-      <Card className="col-span-3 bg-gradient-to-br from-[#0B0E17] to-[#1E2329] p-8 relative overflow-hidden rounded-xl">
+      <Card className="lg:col-span-3 bg-gradient-to-br from-[#0B0E17]  to-[#1E2329] p-8 relative overflow-hidden rounded-3xl h-[25rem] sm:h-[19rem] 2xl:h-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -17,8 +18,10 @@ export default function HeroSection() {
           <h1 className="text-4xl font-bold mb-4 text-white">
             Dese prisa
             <br />y reciba su primer
-            <br />bono de +500%
-            <br />para depósito
+            <br />
+            bono de +500%
+            <br />
+            para depósito
           </h1>
           <Button
             size="lg"
@@ -69,31 +72,48 @@ export default function HeroSection() {
       </Card>
 
       {/* Promotional cards */}
-      <div className="space-x-4 flex items-center h-full w-full col-span-2">
-        <Card className="bg-gradient-to-br from-purple-600 to-purple-800 p-6 rounded-xl h-full w-full">
-          <h2 className="text-2xl font-bold text-white">
-            Cashback
-            <br />
-            hasta 30% en
-            <br />
-            el casino
-          </h2>
-          <Button className="bg-white text-black font-bold rounded-full px-6">
-            Ir al casino
-          </Button>
+      <div className="relative space-y-4 lg:space-x-4 flex flex-col lg:flex-row items-center h-full w-full col-span-1 lg:col-span-2">
+        <Card className="flex justify-center items-center bg-gradient-to-br from-purple-600 to-purple-800 p-6 rounded-3xl h-[25rem] sm:h-[19rem] 2xl:h-full w-full">
+          <Image
+            src={"https://imgproxy.v1.bundlecdn.com/unsafe/banner_desktop_main_2x/plain/https://v1.bundlecdn.com/img/cashback.f5a548e68-399.png@png"}
+            alt="Cashback"
+            className="absolute "
+            width={400}
+            height={300}
+          />
+          <div className="z-[1] h-full w-full flex flex-col justify-between items-center px-4">
+            <div className="pt-4">
+              <h2 className="text-3xl 2xl:text-[43px] leading-10 font-bold text-white">
+                Cashback hasta 30% en el casino
+              </h2>
+            </div>
+            <Button className="bg-white text-black w-full p-6">
+              <h2 className="text-xl 2xl:text-2xl font-semibold">Ir al casino</h2>
+            </Button>
+          </div>
         </Card>
 
-        <Card className="bg-gradient-to-br from-blue-500 to-blue-700 p-6 rounded-xl h-full w-full">
-          <h2 className="text-2xl font-bold text-white mb-4">
-            Bono de
-            <br />
-            +500%
-          </h2>
-          <Button className="bg-white text-black font-bold rounded-full px-6">
-            Registro
-          </Button>
+        <Card className="flex justify-center items-center bg-gradient-to-br from-blue-500 to-blue-700 p-6 rounded-3xl h-[25rem] sm:h-[19rem] 2xl:h-full w-full ">
+        <Image
+            src={"https://imgproxy.v1.bundlecdn.com/unsafe/banner_desktop_main_2x/plain/https://v1.bundlecdn.com/img/bonus.8be9e8f98-362.png@png"}
+            alt="Cashback"
+            className="absolute "
+            width={400}
+            height={300}
+          />
+          <div className="z-[1] h-full w-full flex flex-col justify-between items-center px-4">
+            <div className="pt-4">
+              <h2 className="text-3xl 2xl:text-[43px] leading-10 font-bold text-white">
+                Bono de <br />
+                +500%
+              </h2>
+            </div>
+            <Button className="bg-white text-black w-full p-6">
+              <h2 className="text-xl 2xl:text-2xl font-semibold">Registro</h2>
+            </Button>
+          </div>
         </Card>
       </div>
     </div>
-  )
+  );
 }
