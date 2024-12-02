@@ -72,7 +72,7 @@ export default function HeroSection() {
       </Card>
 
       {/* Promotional cards */}
-      <div className="relative space-y-4 lg:space-x-4 flex flex-col lg:flex-row items-center h-full w-full col-span-1 lg:col-span-2">
+      <div className="relative max-sm:space-y-4 lg:space-x-4 flex flex-col lg:flex-row items-center h-full w-full col-span-1 lg:col-span-2">
         <Card className="flex justify-center items-center bg-gradient-to-br from-purple-600 to-purple-800 p-6 rounded-3xl h-[25rem] sm:h-[19rem] 2xl:h-full w-full">
           <Image
             src={"https://imgproxy.v1.bundlecdn.com/unsafe/banner_desktop_main_2x/plain/https://v1.bundlecdn.com/img/cashback.f5a548e68-399.png@png"}
