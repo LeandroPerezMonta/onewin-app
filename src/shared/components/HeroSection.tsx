@@ -35,39 +35,11 @@ export default function HeroSection() {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="absolute right-8 top-1/2 transform -translate-y-1/2"
+          className="absolute bottom-0 right-8 md:top-1/2 transform -translate-y-1/2"
         >
-          <div className="text-[120px] font-bold text-[#FFD700] glow-text">
+          <div className="text-[80px] md:text-[120px] font-bold text-[#FFD700] glow-text">
             +500%
           </div>
-        </motion.div>
-
-        {/* Animated floating elements */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          className="absolute top-1/4 right-1/4 text-4xl"
-        >
-          🎲
-        </motion.div>
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          className="absolute bottom-1/4 right-1/3 text-4xl"
-        >
-          🎁
         </motion.div>
       </Card>
 

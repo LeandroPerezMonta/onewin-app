@@ -1,5 +1,6 @@
 import {
-  Button
+  Button,
+  useDisclosure
 } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +11,7 @@ import { TbLock } from "react-icons/tb";
 import { CiGift } from "react-icons/ci";
 import { BsFillPhoneFill } from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
+import { ModalForm } from "./ModalForm";
 
 const links = [
   { text: "Inicio", href: "#" , id:'inicio'},
@@ -25,10 +27,16 @@ const links = [
 
 export const NavbarComponent = () => {
   const [currentTab, setCurrentTab] = useState('inicio')
+  const {isOpen, onOpen, onClose} = useDisclosure();
+  const [activeTab, setActiveTab] = useState<"login" | "register">("login");
+
+  const handleOpen = () => {
+    onOpen();
+  }
 
   return (
     <div className="w-full flex flex-col">
-      <div className="bg-[#090f1e] border-b border-[#1E2329]  flex justify-between items-center">
+      <div className="bg-[#090f1e] border-b max-md:mb-2 border-[#1E2329]  flex justify-between items-center">
         <div className="flex gap-2">
           <TbLock size={25} className="bg-[#1e283f] p-1 rounded-lg"/>
           <MdOutlinePhoneIphone size={25} className="bg-[#1e283f] p-1 rounded-lg"/>
@@ -89,6 +97,7 @@ export const NavbarComponent = () => {
             <Button
               size="sm"
               variant="solid"
+              onClick={handleOpen}
               className=" bg-gradient-to-r from-[#2cb865] to-[#099f4f] font-semibold"
             >
               <BiPlus size={20} className="mr-2 rounded-full bg-gradient-to-tr from-[#ade28a] to-[#2cb865] p-1"/>
@@ -97,6 +106,8 @@ export const NavbarComponent = () => {
           </div>
         </div>
       </div>
+
+      <ModalForm activeTab={activeTab} setActiveTab={setActiveTab} isOpen={isOpen} onClose={onClose}/>
     </div>
   );
 };

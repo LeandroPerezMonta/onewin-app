@@ -7,14 +7,18 @@ import Image from "next/image"
 export default function PokerSection() {
   return (
     <Card className="bg-gradient-to-r from-[#1e283f] to-[#0f1627] overflow-hidden rounded-xl mb-8 p-4 relative">
-      <div className="flex justify-between items-center z-[2]">
+      <div className="flex justify-between items-center z-[2] px-4">
         <div>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-bold text-white mb-4">Poker</h2>
+            <div className="flex flex-col">
+            <h2 className="text-4xl font-bold text-white min-w-max">
+              Poker
+            </h2>
+          </div>
             <p className="text-gray-400 mb-6">Ven, juega y gana</p>
             <Button
               size="lg"
@@ -24,7 +28,7 @@ export default function PokerSection() {
             </Button>
           </motion.div>
         </div>
-      <canvas data-v-1e11f167="" className="promo-card__pic" width="256" height="256"></canvas>
+      {/* <canvas data-v-1e11f167="" className="promo-card__pic" width="256" height="256"></canvas> */}
       </div>
       <Image
         className="absolute right-0 z-[1]"
