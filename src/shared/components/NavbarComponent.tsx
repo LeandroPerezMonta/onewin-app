@@ -1,13 +1,14 @@
-import { Button } from "@nextui-org/react";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SelectComponent } from "./SelectComponent";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { TbLock } from "react-icons/tb";
 import { CiGift } from "react-icons/ci";
 import { BsFillPhoneFill } from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
+import Cookies from "js-cookie";
 
 const links = [
   { text: "Inicio", href: "#", id: "inicio" },
@@ -23,12 +24,30 @@ const links = [
 
 export const NavbarComponent = ({ handleOpen, setActiveTab }: { handleOpen: () => void, setActiveTab: React.Dispatch<React.SetStateAction<"login" | "register">> }) => {
   const [currentTab, setCurrentTab] = useState("inicio");
+  const [currentUser, setCurrentUser] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loginCookie = Cookies.get("loginCookie");
+    if (loginCookie) {
+      const { username } = JSON.parse(loginCookie);
+      if (username) {
+        setCurrentUser(username); // Actualizamos el estado con el username
+      }
+    }
+  }, []);
 
   const handleOpenModal = (action: "login" | "register") => {
     handleOpen();
     setActiveTab(action);
   };
 
+  const handleLogout = () => {
+    Cookies.remove("loginCookie");
+    setCurrentUser(null);
+    window.location.reload()
+  };
+
+  console.log(currentUser)
 
   return (
     <div className="w-full flex flex-col">
@@ -107,30 +126,47 @@ export const NavbarComponent = ({ handleOpen, setActiveTab }: { handleOpen: () =
           </div>
         </div>
         <div className="flex items-center">
-          <div>
-            <Button
-              variant="flat"
-              size="sm"
-              onClick={() => handleOpenModal("login")}
-              className="text-white mr-2 px-4 bg-[#1f2841] font-semibold"
-            >
-              Iniciar sesión
-            </Button>
-          </div>
-          <div>
-            <Button
-              size="sm"
-              variant="solid"
-              onClick={() => handleOpenModal("register")}
-              className=" bg-gradient-to-r from-[#2cb865] to-[#099f4f] font-semibold"
-            >
-              <BiPlus
-                size={20}
-                className="mr-2 rounded-full bg-gradient-to-tr from-[#ade28a] to-[#2cb865] p-1"
-              />
-              Crear cuenta
-            </Button>
-          </div>
+          {currentUser ? (
+            <Dropdown>
+              <DropdownTrigger>
+                <Button 
+                  variant="bordered" 
+                  className="text-white mr-2 px-4 bg-[#1f2841] font-semibold border-none"
+                >
+                  <span className="capitalize">{`Hola, ${currentUser}`}</span>
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions">
+                <DropdownItem key="deposit">Depositar</DropdownItem>
+                <DropdownItem key="logout" className="text-danger" color="danger" onClick={handleLogout}>
+                  Salir
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          ) : (
+            <>
+              <Button
+                variant="flat"
+                size="sm"
+                onClick={() => handleOpenModal("login")}
+                className="text-white mr-2 px-4 bg-[#1f2841] font-semibold"
+              >
+                Iniciar sesión
+              </Button>
+              <Button
+                size="sm"
+                variant="solid"
+                onClick={() => handleOpenModal("register")}
+                className=" bg-gradient-to-r from-[#2cb865] to-[#099f4f] font-semibold"
+              >
+                <BiPlus
+                  size={20}
+                  className="mr-2 rounded-full bg-gradient-to-tr from-[#ade28a] to-[#2cb865] p-1"
+                />
+                Crear cuenta
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>

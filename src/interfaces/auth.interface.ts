@@ -4,6 +4,7 @@ export interface LoginForm {
 }
 
 export interface RegisterForm {
+  username: string; // Nombre de usuario
   currency: string; // Moneda seleccionada (ejemplo: "COP")
   phone: string; // Número de teléfono
   email: string; // Correo electrónico

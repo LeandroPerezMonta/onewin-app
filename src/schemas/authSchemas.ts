@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const loginValidationSchema = Yup.object({
+export const LoginValidationSchema = Yup.object({
   emailOrPhone: Yup.string()
     .required('El correo electrónico o teléfono es obligatorio')
     .test(
@@ -18,8 +18,11 @@ export const loginValidationSchema = Yup.object({
 });
 
 
-export const registerValidationSchema = Yup.object({
-  currency: Yup.string().required('La moneda es obligatoria'),
+export const RegisterValidationSchema = Yup.object({
+  username: Yup.string()
+    .required('El nombre de usuario es obligatorio')
+    .min(3, 'El nombre de usuario debe tener al menos 3 caracteres'),
+  currency: Yup.string(),
   phone: Yup.string()
     .required('El número de teléfono es obligatorio')
     .matches(/^[0-9]{10,15}$/, 'El número de teléfono debe tener entre 10 y 15 dígitos'),
