@@ -24,7 +24,6 @@ export const RegisterModal = ({ isOpen, onClose, setActiveTab }: LoginModalProps
     initialValues,
     validationSchema: RegisterValidationSchema,
     onSubmit: (values) => {
-      console.log("Datos del formulario:", values);
       Cookies.set("registerCookie", JSON.stringify(values), { expires: 7, path: "/" });
       Cookies.set("loginCookie", JSON.stringify({ email: values.email, password: values.password, username: values.username }), { expires: 7, path: "/" });
       window.location.reload()

@@ -43,14 +43,14 @@ export const DepositModal = ({ isOpen, onClose }: LoginModalProps) => {
                     toast.success("Wallet copiada");
                   }}
                 >
-                  <h1 className="font-bold mb-2">Mi Wallet de USDT:</h1>
+                  <h1 className="font-bold mb-2 max-lg:text-xs">Mi Wallet de USDT:</h1>
                   <CopyToClipboard
                     text={"0xFb3eDCA7041FD5E8F9e09F652C5f06bBa1D725Ba"}
                   >
                     <div>
                       <Tooltip showArrow={true} content="Copiar Wallet">
                         <div>
-                          <button className=" bg-default p-4 rounded-xl">
+                          <button className=" bg-default p-4 rounded-xl max-lg:text-xs">
                             0xFb3eDCA7041FD5E8F9e09F652C5f06bBa1D725Ba
                           </button>
                         </div>

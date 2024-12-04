@@ -11,12 +11,12 @@ export const SpinnerLoading = ({ label }: SpinnerLoadingPros) => {
       <Spinner
         classNames={{
           base: "",
-          wrapper: "w-[11rem] h-[11rem]",
+          wrapper: "w-[11rem] h-[11rem] ",
           circle1: "border-[1rem]",
           circle2: "border-[1rem]",
           label: "absolute right-[8rem]",
         }}
-        className="w-16 z-[2]"
+        className="w-16 z-[2] max-lg:translate-x-8"
         label={label ? "Cargando..." : ""}
         size="lg"
       >
@@ -26,7 +26,7 @@ export const SpinnerLoading = ({ label }: SpinnerLoadingPros) => {
           alt="1win"
           width={300}
           height={300}
-          className=" w-[7rem] h-[7rem] -translate-x-20 z-[3]"
+          className=" w-[7rem] h-[7rem] -translate-x-12 lg:-translate-x-20 z-[3]"
         />
     </div>
   );
