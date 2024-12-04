@@ -60,7 +60,7 @@ export const DepositModal = ({ isOpen, onClose }: LoginModalProps) => {
                 </div>
               </div>
             </AccordionItem>
-            <AccordionItem key="2" aria-label="Accordion 2" title="Accordion 2">
+            <AccordionItem key="2" aria-label="Accordion 2" title="Link de Trust">
               <div className="my-4">
                 <h1 className="font-bold mb-2">Mi Wallet de USDT:</h1>
                 <Link
@@ -75,7 +75,7 @@ export const DepositModal = ({ isOpen, onClose }: LoginModalProps) => {
                 </Link>
               </div>
             </AccordionItem>
-            <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
+            <AccordionItem key="3" aria-label="Accordion 3" title="Por Nequi">
             <div className="flex flex-col items-center w-full ">
                 <Image
                   src={"/QrNequi.jpg"}
