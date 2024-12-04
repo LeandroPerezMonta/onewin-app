@@ -1,10 +1,31 @@
-'use client'
+"use client";
 
-import { Button, Card } from "@nextui-org/react"
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { Button, Card } from "@nextui-org/react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
-export default function HeroSection() {
+export interface GenericProps {
+  setActiveTab: React.Dispatch<
+    React.SetStateAction<"login" | "register" | "deposit">
+  >;
+  currentUser: string | null;
+  handleOpen: () => void;
+}
+
+export default function HeroSection({
+  setActiveTab,
+  currentUser,
+  handleOpen,
+}: GenericProps) {
+  const handleOpenModal = () => {
+    handleOpen();
+    if (currentUser) {
+      setActiveTab("deposit");
+    } else {
+      setActiveTab("login");
+    }
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:mb-8 f-full 2xl:h-[410px]">
       {/* Main hero card */}
@@ -25,6 +46,10 @@ export default function HeroSection() {
           </h1>
           <Button
             size="lg"
+            onClick={() => {
+              setActiveTab("register")
+              handleOpen()
+            }}
             className="bg-white text-black font-bold rounded-full px-8"
           >
             Registrarse
@@ -47,7 +72,9 @@ export default function HeroSection() {
       <div className="relative max-sm:space-y-4 lg:space-x-4 flex flex-col lg:flex-row items-center h-full w-full col-span-1 lg:col-span-2">
         <Card className="flex justify-center items-center bg-gradient-to-br from-purple-600 to-purple-800 p-6 rounded-3xl h-[25rem] sm:h-[19rem] 2xl:h-full w-full">
           <Image
-            src={"https://imgproxy.v1.bundlecdn.com/unsafe/banner_desktop_main_2x/plain/https://v1.bundlecdn.com/img/cashback.f5a548e68-399.png@png"}
+            src={
+              "https://imgproxy.v1.bundlecdn.com/unsafe/banner_desktop_main_2x/plain/https://v1.bundlecdn.com/img/cashback.f5a548e68-399.png@png"
+            }
             alt="Cashback"
             className="absolute "
             width={400}
@@ -59,15 +86,22 @@ export default function HeroSection() {
                 Cashback hasta 30% en el casino
               </h2>
             </div>
-            <Button className="bg-white text-black w-full p-6">
-              <h2 className="text-xl 2xl:text-2xl font-semibold">Ir al casino</h2>
+            <Button
+              className="bg-white text-black w-full p-6"
+              onClick={() => handleOpenModal()}
+            >
+              <h2 className="text-xl 2xl:text-2xl font-semibold">
+                Ir al casino
+              </h2>
             </Button>
           </div>
         </Card>
 
         <Card className="flex justify-center items-center bg-gradient-to-br from-blue-500 to-blue-700 p-6 rounded-3xl h-[25rem] sm:h-[19rem] 2xl:h-full w-full ">
-        <Image
-            src={"https://imgproxy.v1.bundlecdn.com/unsafe/banner_desktop_main_2x/plain/https://v1.bundlecdn.com/img/bonus.8be9e8f98-362.png@png"}
+          <Image
+            src={
+              "https://imgproxy.v1.bundlecdn.com/unsafe/banner_desktop_main_2x/plain/https://v1.bundlecdn.com/img/bonus.8be9e8f98-362.png@png"
+            }
             alt="Cashback"
             className="absolute "
             width={400}
@@ -81,7 +115,12 @@ export default function HeroSection() {
               </h2>
             </div>
             <Button className="bg-white text-black w-full p-6">
-              <h2 className="text-xl 2xl:text-2xl font-semibold">Registro</h2>
+              <h2
+                className="text-xl 2xl:text-2xl font-semibold"
+                onClick={() => handleOpenModal()}
+              >
+                Registro
+              </h2>
             </Button>
           </div>
         </Card>

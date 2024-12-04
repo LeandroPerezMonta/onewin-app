@@ -4,6 +4,8 @@ import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,6 +36,18 @@ export default function RootLayout({
         <NextUIProvider>
           <Suspense fallback={<Loading />}>{children}</Suspense>
         </NextUIProvider>
+        <ToastContainer
+          position='top-right'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='dark'
+        />
       </body>
     </html>
   );

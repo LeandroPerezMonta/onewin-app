@@ -24,8 +24,8 @@ import Cookies from "js-cookie";
 export interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
-  activeTab: "login" | "register";
-  setActiveTab: React.Dispatch<React.SetStateAction<"login" | "register">>;
+  activeTab: "login" | "register" | "deposit";
+  setActiveTab: React.Dispatch<React.SetStateAction<"login" | "register" | "deposit">>;
 }
 
 const initialValues: LoginForm = {

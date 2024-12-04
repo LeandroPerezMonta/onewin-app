@@ -2,6 +2,7 @@
 
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import { motion } from "framer-motion";
+import { GenericProps } from "./HeroSection";
 
 const games = [
   {
@@ -30,7 +31,18 @@ const games = [
   },
 ];
 
-export default function GamesGrid() {
+export default function GamesGrid({currentUser, handleOpen, setActiveTab}:GenericProps) {
+
+  const handleOpenModal = () => {
+    console.log('handleOpenModal called');
+    handleOpen();
+    if (currentUser) {
+      setActiveTab("deposit");
+    } else {
+      setActiveTab("login");
+    }
+  };
+
   return (
     <div className="mb-8 flex flex-col justify-center bg-gradient-to-r from-[#1e283f] to-[#0f1627] overflow-hidden rounded-xl p-4">
       <div className="flex justify-between items-center mb-4">
@@ -87,8 +99,8 @@ export default function GamesGrid() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <Card className="bg-transparent shadow-none cursor-pointer hover:scale-105 transition-transform rounded-xl overflow-hidden">
-              <CardBody className="p-0">
+            <Card className="bg-transparent shadow-none cursor-pointer hover:scale-105 transition-transform rounded-xl overflow-hidden" >
+              <CardBody className="p-0" onClick={() => handleOpenModal()}>
                 <Image
                   src={game.image}
                   alt={game.title}

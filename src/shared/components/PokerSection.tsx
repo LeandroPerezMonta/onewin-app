@@ -3,8 +3,18 @@
 import { Button, Card } from "@nextui-org/react"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { GenericProps } from "./HeroSection"
 
-export default function PokerSection() {
+export default function PokerSection({currentUser, handleOpen, setActiveTab}:GenericProps) {
+  const handleOpenModal = () => {
+    handleOpen();
+    if (currentUser) {
+      setActiveTab("deposit");
+    } else {
+      setActiveTab("login");
+    }
+  };
+
   return (
     <Card className="bg-gradient-to-r from-[#1e283f] to-[#0f1627] overflow-hidden rounded-xl mb-8 p-4 relative">
       <div className="flex justify-between items-center z-[2] px-4">
@@ -22,6 +32,7 @@ export default function PokerSection() {
             <p className="text-gray-400 mb-6">Ven, juega y gana</p>
             <Button
               size="lg"
+              onClick={handleOpenModal}
               className="bg-purple-600 text-white font-bold rounded-full px-8"
             >
               Obtener bono

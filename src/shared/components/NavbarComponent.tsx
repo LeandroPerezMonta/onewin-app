@@ -1,7 +1,7 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { SelectComponent } from "./SelectComponent";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { TbLock } from "react-icons/tb";
@@ -22,19 +22,15 @@ const links = [
   { text: "Juegos rápidos", href: "#", id: "juegosrapidos" },
 ];
 
-export const NavbarComponent = ({ handleOpen, setActiveTab }: { handleOpen: () => void, setActiveTab: React.Dispatch<React.SetStateAction<"login" | "register">> }) => {
-  const [currentTab, setCurrentTab] = useState("inicio");
-  const [currentUser, setCurrentUser] = useState<string | null>(null);
+interface NavbarComponentProps {
+  handleOpen: () => void;
+  setActiveTab: React.Dispatch<React.SetStateAction<"login" | "register" | "deposit">>;
+  currentUser: string | null;
+  setCurrentUser: React.Dispatch<React.SetStateAction<string | null>>;
+}
 
-  useEffect(() => {
-    const loginCookie = Cookies.get("loginCookie");
-    if (loginCookie) {
-      const { username } = JSON.parse(loginCookie);
-      if (username) {
-        setCurrentUser(username); // Actualizamos el estado con el username
-      }
-    }
-  }, []);
+export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurrentUser }: NavbarComponentProps ) => {
+  const [currentTab, setCurrentTab] = useState("inicio");
 
   const handleOpenModal = (action: "login" | "register") => {
     handleOpen();
@@ -46,8 +42,6 @@ export const NavbarComponent = ({ handleOpen, setActiveTab }: { handleOpen: () =
     setCurrentUser(null);
     window.location.reload()
   };
-
-  console.log(currentUser)
 
   return (
     <div className="w-full flex flex-col">
