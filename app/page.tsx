@@ -51,7 +51,7 @@ export default function Home() {
         {currentUser ? (
           <div className="mt-8">
             <div className="w-full justify-center text-center "><h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-[#ececec] to-[#5d28cf]  bg-clip-text text-transparent font-inter">Recarga tu saldo</h1></div>
-            <div className="w-full justify-center text-center"><h1 className="text-xl font-bold mb-4"></h1>Se te Retornará de 200% de tu Recarga 🥳</div>
+            <div className="w-full justify-center text-center text-white"><h1 className="text-xl font-bold mb-4"></h1>Se te Retornará de 200% de tu Recarga 🥳</div>
             <Accordion defaultSelectedKeys={["1", "2", "3"]}>
             <AccordionItem key="1" aria-label="Accordion 1" title="USDT Wallet" >
             <div className="flex flex-col items-center w-full text-white ">
