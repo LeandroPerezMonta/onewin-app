@@ -104,7 +104,7 @@ export default function Footer() {
         <div className="h-[0.1rem] w-full bg-gray-800 mb-4 rounded-full"></div>
 
         {/* Social Media Icons */}
-        <div className="flex gap-4 mb-8">
+        <div className="flex gap-4 my-8">
           <Link href="#" className="text-2xl text-blue-400 hover:text-blue-300"><FaTelegram /></Link>
           <Link href="#" className="text-2xl text-red-500 hover:text-red-400"><FaYoutube /></Link>
           <Link href="#" className="text-2xl text-pink-500 hover:text-pink-400"><FaInstagram /></Link>
@@ -114,43 +114,13 @@ export default function Footer() {
           <Link href="#" className="text-2xl text-gray-400 hover:text-gray-300"><BsThreads /></Link>
         </div>
 
-        {/* Sports Organizations Logos */}
-        <div className="flex justify-between items-center mb-8">
-          <Image src="/uefa-logo.png" alt="UEFA" className="h-8" />
-          <Image src="/ufc-logo.png" alt="UFC" className="h-8" />
-          <Image src="/wta-logo.png" alt="WTA" className="h-8" />
-          <Image src="/fiba-logo.png" alt="FIBA" className="h-8" />
-          <Image src="/nhl-logo.png" alt="NHL" className="h-8" />
-          <Image src="/mlb-logo.png" alt="MLB" className="h-8" />
-          <Image src="/itf-logo.png" alt="ITF" className="h-8" />
-          <Image src="/fifa-logo.png" alt="FIFA" className="h-8" />
-        </div>
-
-        {/* Payment Methods */}
-        <div className="flex flex-wrap justify-between items-center mb-8">
-          <Image src="/visa-logo.png" alt="Visa" className="h-6 mb-2" />
-          <Image src="/mastercard-logo.png" alt="Mastercard" className="h-6 mb-2" />
-          <Image src="/googlepay-logo.png" alt="Google Pay" className="h-6 mb-2" />
-          <Image src="/applepay-logo.png" alt="Apple Pay" className="h-6 mb-2" />
-          <Image src="/bitcoin-logo.png" alt="Bitcoin" className="h-6 mb-2" />
-          <Image src="/ethereum-logo.png" alt="Ethereum" className="h-6 mb-2" />
-          <Image src="/tether-logo.png" alt="Tether" className="h-6 mb-2" />
-          <Image src="/skrill-logo.png" alt="Skrill" className="h-6 mb-2" />
-          <Image src="/payeer-logo.png" alt="Payeer" className="h-6 mb-2" />
-          <Image src="/webmoney-logo.png" alt="WebMoney" className="h-6 mb-2" />
-          <Image src="/muchbetter-logo.png" alt="MuchBetter" className="h-6 mb-2" />
-          <Image src="/jeton-logo.png" alt="Jeton" className="h-6 mb-2" />
-          <Image src="/discover-logo.png" alt="Discover" className="h-6 mb-2" />
-          <Image src="/astropay-logo.png" alt="AstroPay" className="h-6 mb-2" />
-        </div>
-
         {/* Copyright */}
         <div className="text-xs text-gray-500 border-t border-gray-800 pt-4">
           <p>© 2024 1WIN. NextGen Development Labs Ltd (República de Seychelles). Todos los derechos reservados. El contenido de este sitio es propiedad exclusiva de NextGen Development Labs Ltd. La reproducción, modificación, distribución, publicación, transmisión o cualquier forma de copia no autorizada está estrictamente prohibida.</p>
         </div>
 
         {/* Certifications and Language Selector */}
-        <div className="flex justify-between items-center mt-4">
+        <div className=" hidden sm:flex justify-between items-center mt-4">
           <div className="flex gap-4">
             <Image src="/cert1.png" alt="Certification 1" className="h-8" />
             <Image src="/cert2.png" alt="Certification 2" className="h-8" />
