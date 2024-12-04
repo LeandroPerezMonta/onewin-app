@@ -25,7 +25,9 @@ export interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
   activeTab: "login" | "register" | "deposit";
-  setActiveTab: React.Dispatch<React.SetStateAction<"login" | "register" | "deposit">>;
+  setActiveTab: React.Dispatch<
+    React.SetStateAction<"login" | "register" | "deposit">
+  >;
 }
 
 const initialValues: LoginForm = {
@@ -42,12 +44,10 @@ export const LoginModal = ({
     initialValues,
     validationSchema: LoginValidationSchema,
     onSubmit: (values) => {
-
       const registerCookie = Cookies.get("registerCookie");
       if (registerCookie) {
         const { email, password, username } = JSON.parse(registerCookie);
         if (email === values.emailOrPhone && password === values.password) {
-
           Cookies.set(
             "loginCookie",
             JSON.stringify({ email, password, username }),
@@ -152,14 +152,19 @@ export const LoginModal = ({
                   <div className="text-red-500 text-sm">{errors.password}</div>
                 )}
               </div>
-              <p className="text-right text-sm mt-2 cursor-pointer">
-                <a
-                  onClick={() => setActiveTab("register")}
-                  className="text-blue-500 hover:underline"
-                >
-                  Registrate
-                </a>
-              </p>
+              <div className="text-center justify-center space-x-2 flex w-full">
+                <p className=" text-sm mt-2 cursor-pointer">
+                  ¿Aún no tienes una cuenta?
+                </p>
+                <p className=" text-sm mt-2 cursor-pointer ">
+                  <a
+                    onClick={() => setActiveTab("register")}
+                    className="text-blue-500 hover:underline"
+                  >
+                    Registrate
+                  </a>
+                </p>
+              </div>
             </div>
             <ModalFooter>
               <Button

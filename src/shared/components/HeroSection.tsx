@@ -22,7 +22,7 @@ export default function HeroSection({
     if (currentUser) {
       setActiveTab("deposit");
     } else {
-      setActiveTab("login");
+      setActiveTab("register");
     }
   };
 

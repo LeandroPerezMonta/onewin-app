@@ -38,7 +38,7 @@ export default function GamesGrid({currentUser, handleOpen, setActiveTab}:Generi
     if (currentUser) {
       setActiveTab("deposit");
     } else {
-      setActiveTab("login");
+      setActiveTab("register");
     }
   };
 

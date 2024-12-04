@@ -4,11 +4,10 @@ export interface LoginForm {
 }
 
 export interface RegisterForm {
-  username: string; // Nombre de usuario
-  currency: string; // Moneda seleccionada (ejemplo: "COP")
-  phone: string; // Número de teléfono
-  email: string; // Correo electrónico
-  password: string; // Contraseña
-  promoCode?: string; // Código promocional (opcional)
-  termsAccepted: boolean; // Aceptación de términos y condiciones
+  username: string;
+  phone: string; 
+  email: string; 
+  password: string; 
+  promoCode?: string;
+  termsAccepted: boolean;
 }

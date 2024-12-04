@@ -33,7 +33,7 @@ export default function GameCategories({currentUser, setActiveTab, handleOpen}:G
     if (currentUser) {
       setActiveTab("deposit");
     } else {
-      setActiveTab("login");
+      setActiveTab("register");
     }
   };
 

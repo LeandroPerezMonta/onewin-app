@@ -11,7 +11,7 @@ export default function PokerSection({currentUser, handleOpen, setActiveTab}:Gen
     if (currentUser) {
       setActiveTab("deposit");
     } else {
-      setActiveTab("login");
+      setActiveTab("register");
     }
   };
 

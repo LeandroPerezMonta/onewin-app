@@ -53,7 +53,7 @@ export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurr
             className="bg-[#1e283f] p-1 rounded-lg"
           />
           |
-          <Button className="bg-[#FFD700] text-black font-bold text-sm px-4 !h-[1.5rem] rounded-full">
+          <Button onClick={() => handleOpenModal('register')} className="bg-[#FFD700] text-black font-bold text-sm px-4 !h-[1.5rem] rounded-full">
             Free Money! →
           </Button>
         </div>
@@ -62,6 +62,7 @@ export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurr
             size="sm"
             variant="flat"
             className="text-white text-xs !h-[1.7rem] w-[11.5rem] text-end"
+            onClick={() => handleOpenModal('register')}
           >
             <CiGift
               size={28}
@@ -73,6 +74,7 @@ export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurr
             size="sm"
             variant="flat"
             className="text-white text-xs !h-[1.7rem] w-[11.5rem] text-end"
+            onClick={() => handleOpenModal('register')}
           >
             <BsFillPhoneFill
               size={25}

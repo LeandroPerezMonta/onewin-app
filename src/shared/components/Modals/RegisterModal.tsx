@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Select, SelectItem } from "@nextui-org/react";
+import { Button, Checkbox, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader} from "@nextui-org/react";
 import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
 import { BsFlagFill } from "react-icons/bs";
 import { FaGift } from "react-icons/fa";
@@ -10,8 +10,7 @@ import { LoginModalProps } from "./LoginModal";
 import { BiUser } from "react-icons/bi";
 
 const initialValues: RegisterForm = {
-  username: "",  // Cambié 'user' por 'username'
-  currency: "",
+  username: "",
   email: "",
   phone: "",
   password: "",
@@ -40,9 +39,6 @@ export const RegisterModal = ({ isOpen, onClose, setActiveTab }: LoginModalProps
         <ModalBody>
           <form onSubmit={handleSubmit}>
             <div className="space-y-4">
-              <Select placeholder="Selecciona una moneda" className="w-full" aria-label="currency">
-                <SelectItem key="COP">Peso colombiano (COP)</SelectItem>
-              </Select>
               <div>
                 <Input
                   aria-label="username"
