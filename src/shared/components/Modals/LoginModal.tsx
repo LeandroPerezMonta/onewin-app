@@ -42,14 +42,11 @@ export const LoginModal = ({
     initialValues,
     validationSchema: LoginValidationSchema,
     onSubmit: (values) => {
-      console.log("Datos del formulario:", values);
 
-      // Verificar si existe la cookie de registro
       const registerCookie = Cookies.get("registerCookie");
       if (registerCookie) {
         const { email, password, username } = JSON.parse(registerCookie);
         if (email === values.emailOrPhone && password === values.password) {
-          console.log("Login exitoso", { email, password, username });
 
           Cookies.set(
             "loginCookie",
@@ -67,7 +64,6 @@ export const LoginModal = ({
           if (email === values.emailOrPhone && password === values.password) {
             console.log("Login exitoso desde cookie", {
               email,
-              password,
               username,
             });
           }

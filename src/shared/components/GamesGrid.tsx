@@ -34,7 +34,6 @@ const games = [
 export default function GamesGrid({currentUser, handleOpen, setActiveTab}:GenericProps) {
 
   const handleOpenModal = () => {
-    console.log('handleOpenModal called');
     handleOpen();
     if (currentUser) {
       setActiveTab("deposit");
