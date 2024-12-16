@@ -19,7 +19,7 @@ export const LoginValidationSchema = Yup.object({
 
 
 export const RegisterValidationSchema = Yup.object({
-  username: Yup.string()
+  user: Yup.string()
     .required('El nombre de usuario es obligatorio')
     .min(3, 'El nombre de usuario debe tener al menos 3 caracteres'),
   currency: Yup.string(),
@@ -32,6 +32,6 @@ export const RegisterValidationSchema = Yup.object({
   password: Yup.string()
     .required('La contraseña es obligatoria')
     .min(6, 'La contraseña debe tener al menos 6 caracteres'),
-  promoCode: Yup.string(),
+  codigo: Yup.string(),
   termsAccepted: Yup.bool().oneOf([true], 'Debes aceptar los términos y condiciones'),
 });

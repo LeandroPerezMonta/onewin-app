@@ -8,24 +8,37 @@ import { RegisterValidationSchema } from "@/src/schemas/authSchemas";
 import { RegisterForm } from "@/src/interfaces/auth.interface";
 import { LoginModalProps } from "./LoginModal";
 import { BiUser } from "react-icons/bi";
+import { useState } from "react";
 
 const initialValues: RegisterForm = {
-  username: "",
+  user: "",
   email: "",
   phone: "",
   password: "",
-  promoCode: "",
+  codigo: "",
   termsAccepted: false,
 };
 
 export const RegisterModal = ({ isOpen, onClose, setActiveTab }: LoginModalProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const formik = useFormik({
     initialValues,
     validationSchema: RegisterValidationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      setIsLoading(true)
+      const response = await fetch("/api/session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      })
+      console.log(response)
       Cookies.set("registerCookie", JSON.stringify(values), { expires: 7, path: "/" });
-      Cookies.set("loginCookie", JSON.stringify({ email: values.email, password: values.password, username: values.username }), { expires: 7, path: "/" });
+      Cookies.set("loginCookie", JSON.stringify({ email: values.email, password: values.password, username: values.user }), { expires: 7, path: "/" });
       window.location.reload()
+      setIsLoading(false)
       onClose();
     },
   });
@@ -42,8 +55,8 @@ export const RegisterModal = ({ isOpen, onClose, setActiveTab }: LoginModalProps
               <div>
                 <Input
                   aria-label="username"
-                  name="username"
-                  value={values.username}
+                  name="user"
+                  value={values.user}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="Nombre de Usuario"
@@ -51,7 +64,7 @@ export const RegisterModal = ({ isOpen, onClose, setActiveTab }: LoginModalProps
                   type="text"
                   className="w-full"
                 />
-                {errors.username && touched.username && <div className="text-red-500 text-sm">{errors.username}</div>}
+                {errors.user && touched.user && <div className="text-red-500 text-sm">{errors.user}</div>}
               </div>
               <div>
                 <Input
@@ -98,15 +111,15 @@ export const RegisterModal = ({ isOpen, onClose, setActiveTab }: LoginModalProps
               <div className="flex items-center space-x-2">
                 <Input
                   aria-label="PromoCode"
-                  name="promoCode"
-                  value={values.promoCode}
+                  name="codigo"
+                  value={values.codigo}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   startContent={<FaGift className="text-red-500" />}
                   placeholder="Código promocional (opcional)"
                   className="w-full"
                 />
-                {errors.promoCode && touched.promoCode && <div className="text-red-500 text-sm">{errors.promoCode}</div>}
+                {errors.codigo && touched.codigo && <div className="text-red-500 text-sm">{errors.codigo}</div>}
               </div>
               <div>
                 <Checkbox
@@ -137,7 +150,7 @@ export const RegisterModal = ({ isOpen, onClose, setActiveTab }: LoginModalProps
               </div>
             </div>
             <ModalFooter>
-              <Button className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold" type="submit">
+              <Button isLoading={isLoading} className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold" type="submit">
                 Crear cuenta
               </Button>
             </ModalFooter>

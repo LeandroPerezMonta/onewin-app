@@ -4,10 +4,10 @@ export interface LoginForm {
 }
 
 export interface RegisterForm {
-  username: string;
+  user: string;
   phone: string; 
   email: string; 
   password: string; 
-  promoCode?: string;
+  codigo?: string;
   termsAccepted: boolean;
 }
