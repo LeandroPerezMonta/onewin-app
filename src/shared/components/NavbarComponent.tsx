@@ -58,7 +58,7 @@ export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurr
             className="bg-[#1e283f] p-1 rounded-lg text-white"
           />
           |
-          <Button onClick={() => handleOpenModal('register')} className="bg-[#FFD700] text-black font-bold text-sm px-4 !h-[1.5rem] rounded-full">
+          <Button onClick={() => currentUser ? null : handleOpenModal('register')} className="bg-[#FFD700] text-black font-bold text-sm px-4 !h-[1.5rem] rounded-full">
             Free Money! →
           </Button>
         </div>
