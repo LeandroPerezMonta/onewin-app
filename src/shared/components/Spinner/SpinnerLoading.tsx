@@ -7,7 +7,7 @@ interface SpinnerLoadingPros {
 }
 export const SpinnerLoading = ({ label }: SpinnerLoadingPros) => {
   return (
-    <div className="flex h-screen w-screen items-center justify-center ">
+    <div className="flex h-screen w-screen items-center justify-center bg-[#090f1e]">
       <Spinner
         classNames={{
           base: "",

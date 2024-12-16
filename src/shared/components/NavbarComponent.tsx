@@ -37,20 +37,25 @@ export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurr
     setActiveTab(action);
   };
 
+  const handleTab = (id: string) => {
+    setCurrentTab(id)
+  }
+
   const handleLogout = () => {
     Cookies.remove("loginCookie");
     setCurrentUser(null);
+    console.log(currentTab)
     window.location.reload()
   };
 
   return (
     <div className="w-full flex flex-col">
-      <div className="bg-[#090f1e] border-b max-md:mb-2 border-[#1E2329]  flex justify-between items-center">
+      <div className={`bg-[#090f1e] border-b max-md:mb-2 border-[#1E2329]  flex justify-between items-center `}>
         <div className="flex gap-2">
-          <TbLock size={25} className="bg-[#1e283f] p-1 rounded-lg" />
+          <TbLock size={25} className="bg-[#1e283f] p-1 rounded-lg text-white" />
           <MdOutlinePhoneIphone
             size={25}
-            className="bg-[#1e283f] p-1 rounded-lg"
+            className="bg-[#1e283f] p-1 rounded-lg text-white"
           />
           |
           <Button onClick={() => handleOpenModal('register')} className="bg-[#FFD700] text-black font-bold text-sm px-4 !h-[1.5rem] rounded-full">
@@ -62,7 +67,7 @@ export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurr
             size="sm"
             variant="flat"
             className="text-white text-xs !h-[1.7rem] w-[11.5rem] text-end"
-            onClick={() => handleOpenModal('register')}
+            onClick={() => currentUser ? null : handleOpenModal('register')}
           >
             <CiGift
               size={28}
@@ -74,7 +79,7 @@ export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurr
             size="sm"
             variant="flat"
             className="text-white text-xs !h-[1.7rem] w-[11.5rem] text-end"
-            onClick={() => handleOpenModal('register')}
+            onClick={() => currentUser ? null :handleOpenModal('register')}
           >
             <BsFillPhoneFill
               size={25}
@@ -105,9 +110,9 @@ export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurr
             {links.map((link, index) => (
               <div
                 key={index}
-                onClick={() => setCurrentTab(link.id)}
-                className={`border-b-3 border-transparent hover:border-[#0859c6] duration-300 transition-all cursor-pointer pb-2 ${
-                  currentTab === link.id ? "border-[#0859c6]" : ""
+                onClick={() => handleTab(link.id)}
+                className={`border-b-3 text-white/60 hover:text-white border-transparent hover:border-[#0859c6] duration-300 transition-all cursor-pointer pb-2 ${
+                  currentTab === link.id ? "border-[#0859c6] text-white" : ""
                 }`}
               >
                 <Link
@@ -132,7 +137,7 @@ export const NavbarComponent = ({ handleOpen, setActiveTab, currentUser, setCurr
                   <span className="capitalize">{`Hola, ${currentUser}`}</span>
                 </Button>
               </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions">
+              <DropdownMenu aria-label="Static Actions" className="text-white">
                 <DropdownItem key="deposit">Depositar</DropdownItem>
                 <DropdownItem key="logout" className="text-danger" color="danger" onClick={handleLogout}>
                   Salir

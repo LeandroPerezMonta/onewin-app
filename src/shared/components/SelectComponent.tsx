@@ -43,7 +43,7 @@ export const SelectComponent = () => {
       }}
     >
       {(user) => (
-        <SelectItem key={user.key} textValue={user.name}>
+        <SelectItem className='text-white' key={user.key} textValue={user.name}>
           <div className="flex gap-2 items-center">
             <Avatar alt={user.name} className="w-5 h-5"  src={user.flag} />
             <div className="flex">
